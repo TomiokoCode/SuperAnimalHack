@@ -44,7 +44,9 @@ private:
 
 public:
 	Vector3 WorldToScreenPoint2(void* camera, const Vector3& point) const;
-	void NetworkPlayerBunnyhopPerformed2(void* pNetworkPlayer) const;
+	Vector3 TransformGetPosition2(void* unityComponent) const;
+	void TransformSetPosition2(void* unityComponent, const Vector3& point) const;
+	void TransformTranslate2(void* unityComponent, const Vector3& point) const;
 
 	GraphicsContext& GetGraphicsContext() noexcept;
 	const GameContext& GetGameContext() const noexcept;

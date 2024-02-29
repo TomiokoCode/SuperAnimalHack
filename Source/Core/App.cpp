@@ -8,6 +8,8 @@
 #include "../Features/Camera/CameraModule.hpp"
 #include "../Features/SpeedHack/Speedhack.hpp"
 #include "../Features/Bunnyhop/Bunnyhop.hpp"
+#include "../Features/Clip/ClipModule.hpp"
+#include "../Features/Exploits/HandsFuck.hpp"
 
 App::App()
 	: m_logs(),
@@ -29,6 +31,8 @@ void App::AddModules()
 	m_modules.AddModule<CameraModule>();
 	m_modules.AddModule<SpeedhackModule>();
 	m_modules.AddModule<BunnyhopModule>();
+	m_modules.AddModule<HandsFuckModule>();
+	m_modules.AddModule<ClipModule>();
 }
 
 void App::Run()

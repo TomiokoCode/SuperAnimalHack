@@ -13,7 +13,18 @@ namespace HooksDefinitions
 	typedef Vector3(__fastcall* T_WorldToScreenPoint)(void* camera, Vector3 point);
 	typedef void(__fastcall* T_NetworkPlayerDestroy)(void* pNetworkPlayer);
 	typedef void(__fastcall* T_LocalPlayerStart)(void* pLocalPlayer);
+	typedef void(__fastcall* T_LocalPlayerStart)(void* pLocalPlayer);
 	
+	typedef void*(__fastcall* T_GetTransform)(void* pMonoBehaviour);
+	typedef Vector3(__fastcall* T_TransformGetPosition)(void* transform);
+	typedef void(__fastcall* T_TransformSetPosition)(void* transform, Vector3 pos);
+	typedef void(__fastcall* T_TransformTranslate)(void* transform, Vector3 pos);
+	
+	T_TransformSetPosition SetTransformPosition = nullptr;
+	T_TransformGetPosition GetTransformPosition = nullptr;
+	T_TransformTranslate TransformTranslate = nullptr;
+	T_GetTransform GetTransform = nullptr;
+
 	T_SwapChainSetFullscreenState oSetFullscreenState = nullptr;
 	T_NetworkPlayerDestroy pNetworkPlayerDestroy = nullptr;
 	T_NetworkPlayerDestroy oNetworkPlayerDestroy = nullptr;
@@ -29,6 +40,10 @@ namespace HooksDefinitions
 	uintptr_t offsetNetworkPlayerDestroy = 0x13987E0;
 	uintptr_t offsetNetworkPlayerStart = 0x139EA30;
 	uintptr_t offsetWorldToScreenPoint = 0xB97C10;
+	uintptr_t offsetSetTransformPosition = 0xA7F6F0;
+	uintptr_t offsetGetTransformPosition = 0xA7ED70;
+	uintptr_t offsetGetTransform = 0xB9A670;
+	uintptr_t offsetTransformTranslate = 0xA7E4C0;
 	uintptr_t offsetLocalPlayerStart = 0x12674A0;
 
 	HRESULT __stdcall HkResizeBuffers(IDXGISwapChain* pSwapChain, const UINT BufferCount, const UINT Width, const UINT Height, const DXGI_FORMAT NewFormat, const UINT SwapChainFlags);

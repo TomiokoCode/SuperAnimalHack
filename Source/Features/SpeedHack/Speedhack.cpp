@@ -18,20 +18,10 @@ void SpeedhackModule::Run()
 	if (cfg.bSpeedhack)
 	{
 		PatchSpeed(56.0f);
-		
-		if (ctx.localPlayer && ctx.localPlayer->player)
-		{
-			ctx.localPlayer->player->bunnyHopCurrentBonus = 0.3f;
-		}
 	}
 	else
 	{
 		PatchSpeed(m_jumpDefaultSpeedMultiplier);
-	
-		if (ctx.localPlayer && ctx.localPlayer->player)
-		{
-			ctx.localPlayer->player->bunnyHopCurrentBonus = 0.1f;
-		}
 	}
 }
 

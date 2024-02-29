@@ -39,6 +39,10 @@ void HooksManager::Init(ModulesManager * modules)
 	uintptr_t appBase = reinterpret_cast<uintptr_t>(GetModuleHandle(ASSEMBLY_NAME));
 	
 	WorldToScreenPoint = reinterpret_cast<T_WorldToScreenPoint>(appBase + offsetWorldToScreenPoint);
+	SetTransformPosition = reinterpret_cast<T_TransformSetPosition>(appBase + offsetSetTransformPosition);
+	GetTransformPosition = reinterpret_cast<T_TransformGetPosition>(appBase + offsetGetTransformPosition);
+	GetTransform = reinterpret_cast<T_GetTransform>(appBase + offsetGetTransform);
+	TransformTranslate = reinterpret_cast<T_TransformTranslate>(appBase + offsetTransformTranslate);
 	pLocalPlayerStart = reinterpret_cast<T_LocalPlayerStart>(appBase + offsetLocalPlayerStart);
 	pNetworkPlayerStart = reinterpret_cast<T_NetworkPlayerStart>(appBase + offsetNetworkPlayerStart);
 	pNetworkPlayerDestroy = reinterpret_cast<T_NetworkPlayerDestroy>(appBase + offsetNetworkPlayerDestroy);
@@ -85,6 +89,21 @@ void HooksManager::Shutdown()
 Vector3 HooksManager::WorldToScreenPoint2(void* camera, const Vector3& point) const
 {
 	return WorldToScreenPoint(camera, point);
+}
+
+Vector3 HooksManager::TransformGetPosition2(void* unityComponent) const
+{
+	return GetTransformPosition(GetTransform(unityComponent));
+}
+
+void HooksManager::TransformSetPosition2(void* unityComponent, const Vector3& point) const
+{
+	return SetTransformPosition(GetTransform(unityComponent), point);
+}
+
+void HooksManager::TransformTranslate2(void* unityComponent, const Vector3& point) const
+{
+	return TransformTranslate(GetTransform(unityComponent), point);
 }
 
 HooksManager::GraphicsContext& HooksManager::GetGraphicsContext() noexcept

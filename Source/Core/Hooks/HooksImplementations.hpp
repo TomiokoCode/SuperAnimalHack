@@ -152,9 +152,21 @@ HRESULT __stdcall HooksDefinitions::HkSwapChainPresent(IDXGISwapChain* pSwapChai
 
 						ImGui::Text("ESP");
 						ImGui::Checkbox("ESP", &cfg.bEsp);
+						ImGui::Checkbox("Boxes", &cfg.bBoxes);
 						ImGui::Checkbox("Snaplines", &cfg.bSnaplines);
 						ImGui::SliderFloat("Snaplines distance", &cfg.fMaxSnaplineRenderDistance, 0.0f, 5000.0f);
 						ImGui::SliderFloat("Snaplines near distance", &cfg.fNearSnaplineRenderDistance, 0.0f, 5000.0f);
+						ImGui::SliderInt("Maximum lines", &cfg.iSnaplinesMaximumCount, 0, 64);
+
+						ImGui::Separator();
+
+						ImGui::Text("Clip");
+						ImGui::Checkbox("Clip", &cfg.bClip);
+						ImGui::SliderFloat("Clip distance", &cfg.fClipDistance, 0.0f, 50.0f);
+
+						ImGui::Separator();
+
+						ImGui::Text("Exploits | No support");
 					}
 					ImGui::End();
 				}

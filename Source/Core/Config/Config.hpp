@@ -16,18 +16,23 @@ struct Config
 	bool bBoxes = false;
 	bool bBhop = false;
 	bool bEsp = false;
+	bool bClip = false;
+	bool bHandsFuck = false;
 
 	const float fZoomDefaultValue = 67.5f;
 
 	float fZoomOverrideValue = fZoomDefaultValue;
 	float fNearSnaplineRenderDistance = 200.0f;
 	float fMaxSnaplineRenderDistance = 500.0f;
+	float fClipDistance = 10.0f;
+	int iSnaplinesMaximumCount = 0;
 
 	NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(
 		Config,
 		fNearSnaplineRenderDistance,
 		fMaxSnaplineRenderDistance,
 		fZoomOverrideValue,
+		fClipDistance,
 		bEspOnTeammates,
 		bEspOnEnemies,
 		bZoomOverride,
@@ -38,6 +43,8 @@ struct Config
 		bNoRecoil,
 		bBoxes,
 		bBhop,
-		bEsp
+		bEsp,
+		bHandsFuck,
+		bClip
 	);
 };
